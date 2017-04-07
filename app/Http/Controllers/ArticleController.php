@@ -8,29 +8,48 @@ use App\Http\Requests;
 
 class ArticleController extends Controller
 {
-     public function get(){
-        $id = request()->route("id");
-        if(is_null($id)){
-       $articles=Article::all();
-        return view('articles', ["articles"=>$articles]);
-        
-      }
-      $articles = Article::find($id);
-      if(is_null($articles)){
-          return redirect(route("article.get"));
-           }
-           return view("article", ["article"=>$article]);
+public function get(){
+$id = request()->route("id");
+if(is_null($id)){
+$articles = Article::all();
+return view('articles', ["articles" => $articles]);
+
 }
-public function create(){
-    $data = request()->all();
-    $name = array_get($data, "name");
-    if(is_null($name) || strlen($name)== 0){
-        return redirect(route("article.get"));
-    }
-    $article = new Article();
-    $article->name = $name;
-    $article->save();
-    return redirect(route("article.get"));
-   
+$articles = Article::find($id);
+if(is_null($articles)){
+return redirect(route("article.get"));
+}
+return view("article", ["article" => $article]);
+}
+public function xhrGet(){
+if(!request()->ajax()){
+return"this not xhr request";
+}
+$id = request()->route("id");
+if(is_null($id)){
+$articles = Article::all();
+return response()->json($articles);
+}
+$article = Article::find($id);
+if (is_null($article)){
+return redirect(route("article.get"));
+
+}
+return view("article", ["article" => $article]);
+
+}
+
+public function create() {
+$data = request()->all();
+$title = array_get($data, "title");
+$content = array_get($data, "content");
+$category_id = array_get($data, "category_id");
+$article = new Article();
+$category = Category::find($category_id);
+$article->title = $title;
+$article->content = $content;
+$article->save();
+return redirect(route("article.get"));
+
 }
 }

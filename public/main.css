@@ -1,34 +1,47 @@
 body{
     background: url('1.jpg') fixed;
-        background-size: cover;
+    background-size: cover;
 }
 .main-menu {
     background: white;
     padding: 0;
-    width:70vw;
-    margin: 0 auto;
-        opacity: 1;
-        
+    opacity: .8;
+
+}
+
+
+.menu{
+    background: white;
+    padding: 0;
+
+
+    opacity: .8;
+}
+.menu:hover{
+    opacity: 1;
 }
 .main-menu li {
     background:white;
     padding: 15px;
     cursor: pointer;
-        width: 100%;
-    baight: auto;
+    height: auto;
 }
 .main-menu:hover{
     opacity: 1;
 }
 
-   
-    
-   
-    
-        
+.main-menu:hover{
+    opacity: .8;
+}
+
+
+
+
+
+
 .main-section {
     background: white;
     padding: 15px;
     width:70vw;
-    margin:30px auto;
+
 }
