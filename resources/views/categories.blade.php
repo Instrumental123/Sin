@@ -7,11 +7,15 @@
             @endforeach
 </ul>
 
+
 <form method="POST">
+    <div class="from-group">
     <span>Category name</span>
-    <input type="text" name="name" placeholder="...">
+    <input id="name" onkeyup="validInput()" type="text" name="name" placeholder="...">
     <input type="hidden" name="token" value="{{csrf_token()}}">
-    <button type="submit">Add category</button>
-    <button type="reset">Cancel</button>
+    <button type="submit" class="btn btn-default" disabled>Add category</button>
+    <button type="reset" class="btn btn-default">Cancel</button>
     </form>
+</div>
+   
 @stop

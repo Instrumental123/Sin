@@ -45,3 +45,11 @@ body{
     width:70vw;
 
 }
+
+#bgChanger {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    
+    
+}
